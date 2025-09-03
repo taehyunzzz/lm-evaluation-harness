@@ -798,7 +798,7 @@ class PhimoeSparseMoeBlock(nn.Module):
             routing_weight_mask = routing_weights_top2 >= gate_threshold
             n_skipped = (~routing_weight_mask).sum()
             if sequence_length == 1: # only for decoding
-                n_skipped_total += n_skipped
+                n_skipped_total += n_skipped.item()
             routing_weights = torch.where(routing_weight_mask, routing_weights, 0)
         ##################################################
 

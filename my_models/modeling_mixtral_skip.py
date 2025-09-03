@@ -132,7 +132,7 @@ class MixtralSparseMoeBlock(nn.Module):
         if 1:
             global gate_threshold, n_skipped_total
             routing_weight_mask = routing_weights >= gate_threshold
-            n_skipped = (~routing_weight_mask).sum()
+            n_skipped = (~routing_weight_mask).sum().item()
             if sequence_length == 1: # only for decoding
                 n_skipped_total += n_skipped
             # print("Skipping {} experts".format(n_skipped))
